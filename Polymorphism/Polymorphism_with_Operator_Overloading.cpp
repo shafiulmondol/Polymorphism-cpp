@@ -12,7 +12,8 @@ Demonstrate the use of the + operator and the overridden function.
 #include <string>
 using namespace std;
 
-class Account {
+class Account
+{
 protected:
     int balance;
 
@@ -20,36 +21,43 @@ public:
     Account(int b = 0) : balance(b) {}
 
     // Overload + operator to add balances of two accounts
-    Account operator+(const Account& other) const {
+    Account operator+(const Account &other) const
+    {
         return Account(balance + other.balance);
     }
 
-    virtual void displayBalance() const {
+    virtual void displayBalance() const
+    {
         cout << "Total Balance: " << balance << endl;
     }
 
     virtual ~Account() {}
 };
 
-class SavingsAccount : public Account {
+class SavingsAccount : public Account
+{
 public:
     SavingsAccount(int b) : Account(b) {}
 
-    void displayBalance() const override {
+    void displayBalance() const override
+    {
         cout << "Savings Account Balance: " << balance << endl;
     }
 };
 
-class CurrentAccount : public Account {
+class CurrentAccount : public Account
+{
 public:
     CurrentAccount(int b) : Account(b) {}
 
-    void displayBalance() const override {
+    void displayBalance() const override
+    {
         cout << "Current Account Balance: " << balance << endl;
     }
 };
 
-int main() {
+int main()
+{
     // Create savings and current accounts
     SavingsAccount savings(1000);
     CurrentAccount current(5000);
@@ -58,10 +66,11 @@ int main() {
     Account total = savings + current;
 
     // Demonstrate runtime polymorphism
-    Account* accounts[2] = { &savings, &current };
+    Account *accounts[2] = {&savings, &current};
 
     cout << "Individual Account Balances:" << endl;
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 2; i++)
+    {
         accounts[i]->displayBalance();
     }
 
